@@ -40,6 +40,7 @@ GENERIC_INCLUDES:=$(addprefix -I,$(GENERIC_INCLUDES))
 
 GENERIC_LIB_PATHS=-L$(GENERIC_TARGET_BINARIES_DIR)
 GENERIC_LIBS=-lpc_ardrone -lgtk-x11-2.0 -lrt
+GENERIC_LIBS+=$(shell pkg-config --libs opencv)
 
 SDK_FLAGS+="USE_APP=yes"
 SDK_FLAGS+="APP_ID=linux_sdk_demo"

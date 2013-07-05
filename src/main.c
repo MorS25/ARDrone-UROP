@@ -24,6 +24,10 @@
 //Local project
 #include <Video/video_stage.h>
 
+// Video Processing
+#include <opencv2/core/core_c.h>
+#include <opencv2/highgui/highgui_c.h>
+
 static int32_t exit_ihm_program = 1;
 
 /* Implementing Custom methods for the main function of an ARDrone application */
@@ -38,6 +42,9 @@ C_RESULT ardrone_tool_init_custom(void)
   /* Registering for a new device of game controller */
   //ardrone_tool_input_add( &gamepad );
 
+  /* Opencv Window */
+  cvNamedWindow("Output", CV_WINDOW_AUTOSIZE);  
+
   /* Start all threads of your application */
   START_THREAD( video_stage, NULL );
 
@@ -51,6 +58,9 @@ C_RESULT ardrone_tool_shutdown_custom(void)
 {
   /* Relinquish all threads of your application */
   JOIN_THREAD( video_stage );
+
+  /* Destroy opencv window */
+  cvDestroyWindow("Output");
 
   /* Unregistering for the current device */
   // ardrone_tool_input_remove( &gamepad );

@@ -35,6 +35,9 @@
 #include <ardrone_tool/ardrone_tool.h>
 #include <ardrone_tool/Com/config_com.h>
 
+// Video Processing
+#include "video_processing.h"
+
 #ifndef RECORD_VIDEO
 #define RECORD_VIDEO
 #endif
@@ -60,13 +63,23 @@ C_RESULT output_gtk_stage_open( void *cfg, vp_api_io_data_t *in, vp_api_io_data_
 
 C_RESULT output_gtk_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
+  CvMat *cv_in =
+        cvCreateMatHeader(QVGA_HEIGHT, QVGA_WIDTH, CV_32FC3);
+  /*CvMat *cv_out = 
+        cvCreateMatHeader(QVGA_HEIGHT, QVGA_WIDTH, CV_32FC3);*/
+  CvMat *cv_out;
   vp_os_mutex_lock(&video_update_lock);
  
   /* Get a reference to the last decoded picture */
-  pixbuf_data      = (uint8_t*)in->buffers[0];
+  cvSetData(cv_in, (void*)in->buffers[0], 4*QVGA_WIDTH);
 
   vp_os_mutex_unlock(&video_update_lock);
 
+  //process(&cv_in, &cv_out);
+  cvShowImage("Output", cv_out);
+
+  cvReleaseMat(&cv_in);
+  cvReleaseMat(&cv_out);
   return (SUCCESS);
 }
 
