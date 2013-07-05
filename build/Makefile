@@ -21,7 +21,8 @@ GENERIC_BINARIES_SOURCE_DIR:=$(SRC_DIR)
 
 GENERIC_BINARIES_COMMON_SOURCE_FILES+=			\
    Navdata/navdata.c    \
-   Video/video_stage.c
+   Video/video_stage.c \
+   Control/joypad_control.c
 
 GENERIC_INCLUDES+=					\
 	$(SRC_DIR) \
@@ -39,7 +40,7 @@ GENERIC_BINARIES_SOURCE_ENTRYPOINTS+=			\
 GENERIC_INCLUDES:=$(addprefix -I,$(GENERIC_INCLUDES))
 
 GENERIC_LIB_PATHS=-L$(GENERIC_TARGET_BINARIES_DIR)
-GENERIC_LIBS=-lpc_ardrone -lgtk-x11-2.0 -lrt
+GENERIC_LIBS=-lpc_ardrone -lgtk-x11-2.0 -lrt -lSDL -lm
 
 SDK_FLAGS+="USE_APP=yes"
 SDK_FLAGS+="APP_ID=linux_sdk_demo"

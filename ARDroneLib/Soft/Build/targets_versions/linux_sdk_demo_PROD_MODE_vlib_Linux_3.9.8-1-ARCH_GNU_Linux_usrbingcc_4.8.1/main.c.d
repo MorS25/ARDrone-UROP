@@ -15,29 +15,44 @@ main.o ../../Soft/Build/targets_versions/linux_sdk_demo_PROD_MODE_vlib_Linux_3.9
  /usr/include/stdint.h /usr/include/bits/wchar.h \
  ..//VP_Os/linux/vp_os_serial.h /usr/include/termios.h \
  /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h \
- ../VP_Os/linux/intrin.h \
+ ../VP_Os/linux/intrin.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
+ /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
+ /usr/include/sys/types.h /usr/include/time.h /usr/include/endian.h \
+ /usr/include/bits/endian.h /usr/include/bits/byteswap.h \
+ /usr/include/bits/byteswap-16.h /usr/include/sys/select.h \
+ /usr/include/bits/select.h /usr/include/bits/sigset.h \
+ /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
+ /usr/include/bits/pthreadtypes.h /usr/include/stdlib.h \
+ /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
+ /usr/include/alloca.h /usr/include/bits/stdlib-float.h \
+ /usr/include/string.h /usr/include/xlocale.h /usr/include/bits/string.h \
+ /usr/include/bits/string2.h /usr/include/strings.h \
+ /usr/include/inttypes.h /usr/include/ctype.h /usr/include/iconv.h \
+ /usr/include/SDL/begin_code.h /usr/include/SDL/close_code.h \
+ /usr/include/SDL/SDL_audio.h /usr/include/SDL/SDL_error.h \
+ /usr/include/SDL/SDL_endian.h /usr/include/SDL/SDL_mutex.h \
+ /usr/include/SDL/SDL_thread.h /usr/include/SDL/SDL_rwops.h \
+ /usr/include/SDL/SDL_cdrom.h /usr/include/SDL/SDL_cpuinfo.h \
+ /usr/include/SDL/SDL_events.h /usr/include/SDL/SDL_active.h \
+ /usr/include/SDL/SDL_keyboard.h /usr/include/SDL/SDL_keysym.h \
+ /usr/include/SDL/SDL_mouse.h /usr/include/SDL/SDL_video.h \
+ /usr/include/SDL/SDL_joystick.h /usr/include/SDL/SDL_quit.h \
+ /usr/include/SDL/SDL_loadso.h /usr/include/SDL/SDL_timer.h \
+ /usr/include/SDL/SDL_version.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/utils/ardrone_time.h \
- /usr/include/sys/time.h /usr/include/time.h /usr/include/bits/time.h \
- /usr/include/sys/select.h /usr/include/bits/select.h \
- /usr/include/bits/sigset.h \
+ /usr/include/sys/time.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Navdata/ardrone_navdata_client.h \
  ../VP_Api/vp_api_thread_helper.h ../VP_Os/vp_os_thread.h \
  ..//VP_Os/linux/vp_os_thread_dep.h /usr/include/pthread.h \
- /usr/include/endian.h /usr/include/bits/endian.h \
- /usr/include/bits/byteswap.h /usr/include/bits/byteswap-16.h \
- /usr/include/sched.h /usr/include/bits/sched.h /usr/include/xlocale.h \
- /usr/include/bits/pthreadtypes.h /usr/include/bits/setjmp.h \
+ /usr/include/sched.h /usr/include/bits/sched.h \
+ /usr/include/bits/setjmp.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/ardrone_api.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/ardrone_common_config.h \
  ../ATcodec/ATcodec_api.h ../ATcodec/ATcodec.h \
  ../ATcodec/ATcodec_Memory.h ../ATcodec/ATcodec_Error.h \
  ../ATcodec/ATcodec_Tree.h ../ATcodec/ATcodec_Buffer.h \
- ../VP_Os/vp_os_malloc.h /usr/include/assert.h /usr/include/string.h \
- /usr/include/bits/string.h /usr/include/bits/string2.h \
- /usr/include/stdlib.h /usr/include/bits/waitflags.h \
- /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
- /usr/include/sys/sysmacros.h /usr/include/alloca.h \
- /usr/include/bits/stdlib-float.h \
+ ../VP_Os/vp_os_malloc.h /usr/include/assert.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/navdata_common.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/config.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/generated_custom.h \
@@ -56,11 +71,10 @@ main.o ../../Soft/Build/targets_versions/linux_sdk_demo_PROD_MODE_vlib_Linux_3.9
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/config_keys.h \
  ../../VLIB/../VLIB/video_codec.h ../../VLIB/../VLIB/video_controller.h \
  ../VP_Api/vp_api_picture.h ../../FFMPEG/Includes/libavutil/avutil.h \
- ../../FFMPEG/Includes/libavutil/common.h /usr/include/ctype.h \
- /usr/include/errno.h /usr/include/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/inttypes.h \
+ ../../FFMPEG/Includes/libavutil/common.h /usr/include/errno.h \
+ /usr/include/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
@@ -91,4 +105,5 @@ main.o ../../Soft/Build/targets_versions/linux_sdk_demo_PROD_MODE_vlib_Linux_3.9
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/academy_common.h \
  ../VP_Os/vp_os_print.h ../VP_Os/vp_os_signal.h \
  ..//VP_Os/linux/vp_os_signal_dep.h \
- /home/richard/src/ARDrone_UROP/build/../src/Video/video_stage.h
+ /home/richard/src/ARDrone_UROP/build/../src/Video/video_stage.h \
+ /home/richard/src/ARDrone_UROP/build/../src/Control/joypad_control.h
