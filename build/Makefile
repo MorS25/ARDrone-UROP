@@ -21,7 +21,8 @@ GENERIC_BINARIES_SOURCE_DIR:=$(SRC_DIR)
 
 GENERIC_BINARIES_COMMON_SOURCE_FILES+=			\
    Navdata/navdata.c    \
-   Video/video_stage.c
+   Video/video_stage.c  \
+   Video/video_processing.c
 
 GENERIC_INCLUDES+=					\
 	$(SRC_DIR) \

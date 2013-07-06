@@ -9,7 +9,7 @@ int main(int argc, char** argv)
   capture = cvCaptureFromCAM(0);
 
   cvNamedWindow("Video", CV_WINDOW_AUTOSIZE);
-  cvNamedWindow("Ball", CV_WINDOW_AUTOSIZE);
+  cvNamedWindow("Detect", CV_WINDOW_AUTOSIZE);
 
   IplImage *in = 0;
   IplImage *out;
@@ -22,7 +22,7 @@ int main(int argc, char** argv)
     out = process(in);
 
     cvShowImage("Video", in);
-    cvShowImage("Ball", out);
+    cvShowImage("Detect", out);
     cvReleaseImage(&in);
     cvReleaseImage(&out);
     int c = cvWaitKey(10);
