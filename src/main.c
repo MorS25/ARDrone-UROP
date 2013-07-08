@@ -28,6 +28,10 @@
 #include <Video/vision_stage.h>
 //#include <Control/joypad_control.h>
 
+// Video Processing
+#include <opencv2/core/core_c.h>
+#include <opencv2/highgui/highgui_c.h>
+
 static int32_t exit_ihm_program = 1;
 SDL_Surface* screen;
 input_device_t gamepad;// = malloc(sizeof(input_device_t));
@@ -173,12 +177,14 @@ C_RESULT ardrone_tool_init_custom(void)
     /* Registering for a new device of game controller */
 //    ardrone_tool_input_add( &gamepad );
 
-    /* Start all threads of your application */
-    //START_THREAD( video_stage, NULL );
-    
+  /* Opencv Window */
+  cvNamedWindow("Output", CV_WINDOW_AUTOSIZE);  
+  /* Start all threads of your application */
     start_video_thread();
 
-    return C_OK;
+//  ardrone_tool_set_ui_pad_start(0);
+  
+  return C_OK;
 }
 
 /* The delegate object calls this method when the event loop exit */
@@ -187,8 +193,11 @@ C_RESULT ardrone_tool_shutdown_custom(void)
     /* Relinquish all threads of your application */
     //JOIN_THREAD( video_stage );
 
-    /* Unregistering for the current device */
-    // ardrone_tool_input_remove( &gamepad );
+  /* Destroy opencv window */
+  cvDestroyWindow("Output");
+
+  /* Unregistering for the current device */
+  // ardrone_tool_input_remove( &gamepad );
 
     return C_OK;
 }

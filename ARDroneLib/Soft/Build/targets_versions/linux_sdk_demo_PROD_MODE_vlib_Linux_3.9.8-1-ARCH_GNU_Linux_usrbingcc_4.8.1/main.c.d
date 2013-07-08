@@ -130,4 +130,10 @@ main.o ../../Soft/Build/targets_versions/linux_sdk_demo_PROD_MODE_vlib_Linux_3.9
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_merge_slices.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_latency_estimation.h \
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/vlib_stage_decode.h \
- /home/richard/src/ARDrone_UROP/build/../src/Video/vision_stage.h
+ /home/richard/src/ARDrone_UROP/build/../src/Video/vision_stage.h \
+ /usr/include/opencv2/core/core_c.h /usr/include/opencv2/core/types_c.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/include/mm_malloc.h \
+ /usr/include/opencv2/highgui/highgui_c.h

@@ -21,6 +21,7 @@ GENERIC_BINARIES_SOURCE_DIR:=$(SRC_DIR)
 
 GENERIC_BINARIES_COMMON_SOURCE_FILES+=			\
    Navdata/navdata.c    \
+   Video/video_processing.c \
    Video/vision_stage.c #\
 #   Control/joypad_control.c
 
@@ -41,6 +42,7 @@ GENERIC_INCLUDES:=$(addprefix -I,$(GENERIC_INCLUDES))
 
 GENERIC_LIB_PATHS=-L$(GENERIC_TARGET_BINARIES_DIR)
 GENERIC_LIBS=-lpc_ardrone -lgtk-x11-2.0 -lrt -lSDL -lm
+GENERIC_LIBS+=$(shell pkg-config --libs opencv)
 
 SDK_FLAGS+="USE_APP=yes"
 SDK_FLAGS+="APP_ID=linux_sdk_demo"

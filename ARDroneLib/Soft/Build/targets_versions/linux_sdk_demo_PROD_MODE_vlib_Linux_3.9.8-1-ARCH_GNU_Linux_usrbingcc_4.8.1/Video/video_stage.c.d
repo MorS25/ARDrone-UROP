@@ -1,5 +1,5 @@
 video_stage.o ../../Soft/Build/targets_versions/linux_sdk_demo_PROD_MODE_vlib_Linux_3.9.8-1-ARCH_GNU_Linux_usrbingcc_4.8.1/Video/video_stage.c.d: \
- /home/richard/src/ARDrone_UROP/build/../src/Video/video_stage.c \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../Sources/Video/video_stage.c \
  /usr/include/stdc-predef.h /usr/include/stdio.h /usr/include/features.h \
  /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
@@ -62,8 +62,8 @@ video_stage.o ../../Soft/Build/targets_versions/linux_sdk_demo_PROD_MODE_vlib_Li
  ../VP_Stages/vp_stages_io_file.h ../VP_Stages/vp_stages_i_camif.h \
  ../VP_Api/vp_api_thread_helper.h ../VP_Os/vp_os_thread.h \
  ..//VP_Os/linux/vp_os_thread_dep.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/config.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/generated_custom.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/config.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/generated_custom.h \
  ../VP_Os/vp_os_print.h ../VP_Os/vp_os_malloc.h /usr/include/assert.h \
  ../VP_Os/vp_os_delay.h ../VP_Stages/vp_stages_yuv2rgb.h \
  ../VP_Stages/vp_stages_buffer_to_picture.h \
@@ -73,40 +73,26 @@ video_stage.o ../../Soft/Build/targets_versions/linux_sdk_demo_PROD_MODE_vlib_Li
  ../../VLIB/../VLIB/video_picture_defines.h \
  ../../VLIB/../VLIB/video_gob.h ../../VLIB/../VLIB/video_macroblock.h \
  ../../VLIB/../VLIB/P264/p264_common.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/ardrone_tool.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/ardrone_api.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/ardrone_common_config.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/ardrone_tool/ardrone_tool.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/ardrone_api.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/ardrone_common_config.h \
  ../ATcodec/ATcodec_api.h ../ATcodec/ATcodec.h \
  ../ATcodec/ATcodec_Memory.h ../ATcodec/ATcodec_Error.h \
  ../ATcodec/ATcodec_Tree.h ../ATcodec/ATcodec_Buffer.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/navdata_common.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/vision_common.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/Maths/maths.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/navdata_common.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/vision_common.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/Maths/maths.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/include/float.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/Maths/matrices.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/navdata_keys.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/Maths/quaternions.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/led_animation.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/config_keys.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/academy_common.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Com/config_com.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Com/config_serial.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/Maths/matrices.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/navdata_keys.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/Maths/quaternions.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/led_animation.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/config_keys.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Common/academy_common.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/ardrone_tool/Com/config_com.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/ardrone_tool/Com/config_serial.h \
  ../VP_Com/vp_com.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Com/config_wifi.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_recorder.h \
- /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_com_stage.h \
- /home/richard/src/ARDrone_UROP/build/../src/Video/video_stage.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h /usr/include/strings.h \
- /usr/include/iconv.h /usr/include/SDL/begin_code.h \
- /usr/include/SDL/close_code.h /usr/include/SDL/SDL_audio.h \
- /usr/include/SDL/SDL_error.h /usr/include/SDL/SDL_endian.h \
- /usr/include/SDL/SDL_mutex.h /usr/include/SDL/SDL_thread.h \
- /usr/include/SDL/SDL_rwops.h /usr/include/SDL/SDL_cdrom.h \
- /usr/include/SDL/SDL_cpuinfo.h /usr/include/SDL/SDL_events.h \
- /usr/include/SDL/SDL_active.h /usr/include/SDL/SDL_keyboard.h \
- /usr/include/SDL/SDL_keysym.h /usr/include/SDL/SDL_mouse.h \
- /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
- /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
- /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/ardrone_tool/Com/config_wifi.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_recorder.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../../../../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_com_stage.h \
+ /home/richard/src/ARDrone_SDK_2_0_1/Examples/Linux/sdk_demo/Build/../Sources/Video/video_stage.h
