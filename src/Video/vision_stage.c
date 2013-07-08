@@ -44,7 +44,7 @@
 
 #include <ardrone_tool/Video/video_com_stage.h>
 
-#include "Video/video_stage.h"
+#include "Video/vision_stage.h"
 
 #include <SDL/SDL.h>
 
@@ -55,13 +55,14 @@ PIPELINE_HANDLE pipeline_handle;
 static uint8_t*  pixbuf_data       = NULL;
 static vp_os_mutex_t  video_update_lock = PTHREAD_MUTEX_INITIALIZER;
 
-C_RESULT output_gtk_stage_open( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
+C_RESULT vision_stage_open( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
     return (SUCCESS);
 }
 
-C_RESULT output_gtk_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
+C_RESULT vision_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
+    printf("Here\n");
     vp_os_mutex_lock(&video_update_lock);
 
     /* Get a reference to the last decoded picture */
@@ -72,21 +73,21 @@ C_RESULT output_gtk_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_
     return (SUCCESS);
 }
 
-C_RESULT output_gtk_stage_close( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
+C_RESULT vision_stage_close( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
     return (SUCCESS);
 }
 
 
-const vp_api_stage_funcs_t vp_stages_output_gtk_funcs =
+const vp_api_stage_funcs_t vision_stage_funcs =
 {
     NULL,
-    (vp_api_stage_open_t)output_gtk_stage_open,
-    (vp_api_stage_transform_t)output_gtk_stage_transform,
-    (vp_api_stage_close_t)output_gtk_stage_close
+    (vp_api_stage_open_t)vision_stage_open,
+    (vp_api_stage_transform_t)vision_stage_transform,
+    (vp_api_stage_close_t)vision_stage_close
 };
 
-DEFINE_THREAD_ROUTINE(video_stage, data)
+/*DEFINE_THREAD_ROUTINE(video_stage, data)
 {
     C_RESULT res;
 
@@ -166,14 +167,14 @@ DEFINE_THREAD_ROUTINE(video_stage, data)
 
     stages[pipeline.nb_stages].type    = VP_API_OUTPUT_SDL;
     stages[pipeline.nb_stages].cfg     = NULL;
-    stages[pipeline.nb_stages].funcs   = vp_stages_output_gtk_funcs;
+    stages[pipeline.nb_stages].funcs   = vp_stages_vision_funcs;
 
     pipeline.nb_stages++;
 
-    pipeline.stages = &stages[0];
+    pipeline.stages = &stages[0];*/
 
     /* Processing of a pipeline */
-    if( !ardrone_tool_exit() )
+/*    if( !ardrone_tool_exit() )
     {
         PRINT("\n   Video stage thread initialisation\n\n");
 
@@ -201,5 +202,5 @@ DEFINE_THREAD_ROUTINE(video_stage, data)
     PRINT("   Video stage thread ended\n\n");
 
     return (THREAD_RET)0;
-}
+}*/
 

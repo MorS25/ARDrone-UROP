@@ -105,5 +105,29 @@ main.o ../../Soft/Build/targets_versions/linux_sdk_demo_PROD_MODE_vlib_Linux_3.9
  /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Common/academy_common.h \
  ../VP_Os/vp_os_print.h ../VP_Os/vp_os_signal.h \
  ..//VP_Os/linux/vp_os_signal_dep.h \
- /home/richard/src/ARDrone_UROP/build/../src/Video/video_stage.h \
- /home/richard/src/ARDrone_UROP/build/../src/Control/joypad_control.h
+ /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage.h \
+ ../VP_Os/vp_os_delay.h ../VP_Api/vp_api.h ../VP_Api/vp_api_config.h \
+ ../VP_Api/vp_api_stage.h ../VP_Api/vp_api_supervisor.h \
+ ../VP_Api/vp_api_error.h ../VP_Os/vp_os_error_handling.h \
+ /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_com_stage.h \
+ ../VP_Com/vp_com.h \
+ /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_tcp.h \
+ /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_decoder.h \
+ /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_ffmpeg_decoder.h \
+ ../../FFMPEG/Includes/libavcodec/avcodec.h \
+ ../../FFMPEG/Includes/libavutil/samplefmt.h \
+ ../../FFMPEG/Includes/libavutil/cpu.h \
+ ../../FFMPEG/Includes/libavcodec/version.h \
+ ../../FFMPEG/Includes/libavutil/audioconvert.h \
+ ../../FFMPEG/Includes/libavformat/avformat.h \
+ ../../FFMPEG/Includes/libavutil/dict.h \
+ ../../FFMPEG/Includes/libavformat/avio.h \
+ ../../FFMPEG/Includes/libavutil/common.h \
+ ../../FFMPEG/Includes/libavutil/log.h \
+ ../../FFMPEG/Includes/libavformat/version.h \
+ ../../FFMPEG/Includes/libswscale/swscale.h \
+ ../../VLIB/../VLIB/Stages/vlib_stage_decode.h \
+ /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_merge_slices.h \
+ /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/video_stage_latency_estimation.h \
+ /home/richard/src/ARDrone_UROP/build/../ARDroneLib/Soft/Lib/ardrone_tool/Video/vlib_stage_decode.h \
+ /home/richard/src/ARDrone_UROP/build/../src/Video/vision_stage.h

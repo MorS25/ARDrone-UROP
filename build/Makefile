@@ -21,8 +21,8 @@ GENERIC_BINARIES_SOURCE_DIR:=$(SRC_DIR)
 
 GENERIC_BINARIES_COMMON_SOURCE_FILES+=			\
    Navdata/navdata.c    \
-   Video/video_stage.c \
-   Control/joypad_control.c
+   Video/vision_stage.c #\
+#   Control/joypad_control.c
 
 GENERIC_INCLUDES+=					\
 	$(SRC_DIR) \
