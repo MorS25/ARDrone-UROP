@@ -65,28 +65,24 @@ C_RESULT vision_stage_open( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *o
 C_RESULT vision_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
     printf("%d\n", __LINE__);
-    CvMat *cv_in =
-        cvCreateMatHeader(QVGA_HEIGHT, QVGA_WIDTH, CV_32FC3);
-    /*CvMat *cv_out = 
-      cvCreateMatHeader(QVGA_HEIGHT, QVGA_WIDTH, CV_32FC3);*/
-    CvMat *cv_out;
+
+    IplImage *img = cvCreateImage(cvSize(QVGA_WIDTH,QVGA_HEIGHT), IPL_DEPTH_8U, 3);
+    IplImage *cv_out;
     vp_os_mutex_lock(&video_update_lock);
     printf("%d\n", __LINE__);
 
     printf("4*QVGA_WIDTH: %d\n", 4*QVGA_WIDTH);
-
+    img->imageData = (uint8_t*)in->buffers[0];
     /* Get a reference to the last decoded picture */
-    cvSetData(cv_in, (void*)in->buffers[0], 4*QVGA_WIDTH);
     printf("%d\n", __LINE__);
 
     vp_os_mutex_unlock(&video_update_lock);
 
-    process(cv_in, cv_out);
+    cv_out = process(img);
     printf("%d\n", __LINE__);
-    cvShowImage("Output", cv_in);
+    cvShowImage("Output", cv_out);
 
-    cvReleaseMat(&cv_in);
-    cvReleaseMat(&cv_out);
+    cvReleaseImage(&img);
 
     return (SUCCESS);
 }
