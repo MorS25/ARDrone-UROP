@@ -1,5 +1,8 @@
-ARDroneLib/*
 build/*
 !*.c
 !*.h
 !*Makefile
+*.d
+*.o
+*.swp
+ARDroneLib/Soft/Build/targets_versions/*

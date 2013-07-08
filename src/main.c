@@ -26,7 +26,7 @@
 
 //Local project
 #include <Video/vision_stage.h>
-//#include <Control/joypad_control.h>
+#include <Control/joypad_control.h>
 
 // Video Processing
 #include <opencv2/core/core_c.h>
@@ -70,7 +70,7 @@ C_RESULT start_video_thread(void)
     /**
      * Fill the vp_api_pictures used for video decoding
      */
-    out_picture->format = PIX_FMT_RGB565; // MANDATORY ! Only RGB24, RGB565 are supported
+    out_picture->format = PIX_FMT_RGB24; // MANDATORY ! Only RGB24, RGB565 are supported
     out_picture->width = in_picture->width;
     out_picture->height = in_picture->height;
 
@@ -133,8 +133,8 @@ C_RESULT start_video_thread(void)
     stages_index = 0;
 
     vp_os_memset (&visionCfg, 0, 0);
-/*    visionCfg.bpp = bpp;
-    visionCfg.decoder_info = in_picture;*/
+    /*    visionCfg.bpp = bpp;
+          visionCfg.decoder_info = in_picture;*/
 
     example_post_stages->stages_list[stages_index].name = "Vision processing"; // Debug info
     example_post_stages->stages_list[stages_index].type = VP_API_OUTPUT_SDL; // Debug info
@@ -169,22 +169,22 @@ C_RESULT start_video_thread(void)
 /* The delegate object calls this method during initialization of an ARDrone application */
 C_RESULT ardrone_tool_init_custom(void)
 {
-/*    strcpy(gamepad.name, "XBox controller");
+    strcpy(gamepad.name, "XBox controller");
     gamepad.init = &joypad_init;
     gamepad.update = &joypad_update;
-    gamepad.shutdown = &joypad_shutdown;*/
+    gamepad.shutdown = &joypad_shutdown;
 
     /* Registering for a new device of game controller */
-//    ardrone_tool_input_add( &gamepad );
+    ardrone_tool_input_add( &gamepad );
 
-  /* Opencv Window */
-  cvNamedWindow("Output", CV_WINDOW_AUTOSIZE);  
-  /* Start all threads of your application */
+    /* Opencv Window */
+    cvNamedWindow("Output", CV_WINDOW_AUTOSIZE);  
+    /* Start all threads of your application */
     start_video_thread();
 
-//  ardrone_tool_set_ui_pad_start(0);
-  
-  return C_OK;
+    //  ardrone_tool_set_ui_pad_start(0);
+
+    return C_OK;
 }
 
 /* The delegate object calls this method when the event loop exit */
@@ -193,11 +193,11 @@ C_RESULT ardrone_tool_shutdown_custom(void)
     /* Relinquish all threads of your application */
     //JOIN_THREAD( video_stage );
 
-  /* Destroy opencv window */
-  cvDestroyWindow("Output");
+    /* Destroy opencv window */
+    cvDestroyWindow("Output");
 
-  /* Unregistering for the current device */
-  // ardrone_tool_input_remove( &gamepad );
+    /* Unregistering for the current device */
+    // ardrone_tool_input_remove( &gamepad );
 
     return C_OK;
 }
@@ -219,6 +219,6 @@ C_RESULT signal_exit()
     BEGIN_THREAD_TABLE
     THREAD_TABLE_ENTRY( ardrone_control, 20 )
     THREAD_TABLE_ENTRY( navdata_update, 20 )
-    THREAD_TABLE_ENTRY( video_stage, 20 )
+THREAD_TABLE_ENTRY( video_stage, 20 )
     END_THREAD_TABLE
 

@@ -58,29 +58,31 @@ static vp_os_mutex_t  video_update_lock = PTHREAD_MUTEX_INITIALIZER;
 
 C_RESULT vision_stage_open( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
+    printf("\nvision_stage_open\n");
     return (SUCCESS);
 }
 
 C_RESULT vision_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
+    printf("%d\n", __LINE__);
     CvMat *cv_in =
         cvCreateMatHeader(QVGA_HEIGHT, QVGA_WIDTH, CV_32FC3);
     /*CvMat *cv_out = 
       cvCreateMatHeader(QVGA_HEIGHT, QVGA_WIDTH, CV_32FC3);*/
     CvMat *cv_out;
     vp_os_mutex_lock(&video_update_lock);
+    printf("%d\n", __LINE__);
+
+    printf("4*QVGA_WIDTH: %d\n", 4*QVGA_WIDTH);
 
     /* Get a reference to the last decoded picture */
     cvSetData(cv_in, (void*)in->buffers[0], 4*QVGA_WIDTH);
-
-    printf("fopen");
-    FILE *f = fopen("output.raw", "w");
-    fwrite(cv_in, in->size, 1, f);
-    fclose(f);
+    printf("%d\n", __LINE__);
 
     vp_os_mutex_unlock(&video_update_lock);
 
     process(cv_in, cv_out);
+    printf("%d\n", __LINE__);
     cvShowImage("Output", cv_in);
 
     cvReleaseMat(&cv_in);
