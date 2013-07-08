@@ -1,3 +1,5 @@
 ARDroneLib/*
 build/*
-!build/Makefile
+!*.c
+!*.h
+!*Makefile
