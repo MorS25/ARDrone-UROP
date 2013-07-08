@@ -56,33 +56,80 @@ PIPELINE_HANDLE pipeline_handle;
 static uint8_t*  pixbuf_data       = NULL;
 static vp_os_mutex_t  video_update_lock = PTHREAD_MUTEX_INITIALIZER;
 
+static void getPicSizeFromBufferSize (uint32_t bufSize, uint32_t *width, uint32_t *height)
+{
+    if (NULL == width || NULL == height)
+    {
+        return;
+    }
+
+    switch (bufSize)
+    {
+    case 50688: //QCIF > 176*144 *2bpp
+        *width = 176;
+        *height = 144;
+        break;
+    case 153600: //QVGA > 320*240 *2bpp
+        *width = 320;
+        *height = 240;
+        break;
+    case 460800: //360p > 640*360 *2bpp
+        *width = 640;
+        *height = 360;
+        break;
+    case 1843200: //720p > 1280*720 *2bpp
+        *width = 1280;
+        *height = 720;
+        break;
+    default:
+        *width = 0;
+        *height = 0;
+        break;
+    }
+}
+
 C_RESULT vision_stage_open( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
     printf("\nvision_stage_open\n");
     return (SUCCESS);
 }
 
+IplImage *ipl_image_from_data(uint8_t* data, int reduced_image, int width, int height)
+{
+    IplImage *currframe;
+    IplImage *dst;
+
+    currframe = cvCreateImage(cvSize(width,height), IPL_DEPTH_8U, 3);
+    dst = cvCreateImage(cvSize(width,height), IPL_DEPTH_8U, 3);
+
+    currframe->imageData = data;
+    cvCvtColor(currframe, dst, CV_BGR2RGB);
+    cvReleaseImage(&currframe);
+
+    return dst;
+}
+
 C_RESULT vision_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
-    printf("%d\n", __LINE__);
-
-    IplImage *img = cvCreateImage(cvSize(QVGA_WIDTH,QVGA_HEIGHT), IPL_DEPTH_8U, 3);
     IplImage *cv_out;
     vp_os_mutex_lock(&video_update_lock);
-    printf("%d\n", __LINE__);
 
-    printf("4*QVGA_WIDTH: %d\n", 4*QVGA_WIDTH);
-    img->imageData = (uint8_t*)in->buffers[0];
-    /* Get a reference to the last decoded picture */
-    printf("%d\n", __LINE__);
+    uint32_t width = 0, height = 0;
+    getPicSizeFromBufferSize (in->size, &width, &height);
+
+    IplImage *img = ipl_image_from_data((uint8_t*)in->buffers[0], 1, 640, 360);
 
     vp_os_mutex_unlock(&video_update_lock);
 
     cv_out = process(img);
-    printf("%d\n", __LINE__);
-    cvShowImage("Output", cv_out);
+
+    cvShowImage("Video", img);
+    cvShowImage("Detect", cv_out);
+
+    cvWaitKey(1);
 
     cvReleaseImage(&img);
+    cvReleaseImage(&cv_out);
 
     return (SUCCESS);
 }

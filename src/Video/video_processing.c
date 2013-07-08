@@ -23,8 +23,8 @@ int convert_y(int y)
 IplImage* getThresholdedImage(IplImage* in)
 {
   IplImage* out = cvCreateImage(cvGetSize(in), IPL_DEPTH_8U, 1);
-  //cvInRangeS(in, cvScalar(0,123,119,0), cvScalar(4,205,256,0), out);
-  cvInRangeS(in, cvScalar(144,122,125,0), cvScalar(167,171,203,0), out);
+  cvInRangeS(in, cvScalar(0,123,119,0), cvScalar(4,205,256,0), out);
+  //cvInRangeS(in, cvScalar(144,122,125,0), cvScalar(167,171,203,0), out);
   return out;
 }
 

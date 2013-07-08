@@ -182,11 +182,11 @@ C_RESULT joypad_update(void)
             /*psi*/0.0,
             /*psi_accuracy*/0.0);
 //    }
-    printf("roll: %f, pitch: %f, gaz: %f, yaw: %f\n",
-            /*roll*/(float)(leftStickX)/32768.0f,
-            /*pitch*/(float)(leftStickY)/32768.0f,
-            /*gaz*/-(float)(rightStickY)/32768.0f,
-            /*yaw*/(float)(rightStickX)/32768.0f);
+//    printf("roll: %f, pitch: %f, gaz: %f, yaw: %f\n",
+//            /*roll*/(float)(leftStickX)/32768.0f,
+//            /*pitch*/(float)(leftStickY)/32768.0f,
+//            /*gaz*/-(float)(rightStickY)/32768.0f,
+//            /*yaw*/(float)(rightStickX)/32768.0f);*/
 
     return C_OK;
 }
