@@ -47,7 +47,7 @@ C_RESULT ardrone_tool_init_custom(void)
   /* Start all threads of your application */
   START_THREAD( video_stage, NULL );
 
-  ardrone_tool_set_ui_pad_start(0);
+//  ardrone_tool_set_ui_pad_start(0);
   
   return C_OK;
 }
