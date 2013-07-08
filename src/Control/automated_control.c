@@ -20,18 +20,12 @@ static float ahead = 0;
 static float horizontalTurn = 0;
 static float vertical = 0;
 static uint8_t can_see_ball = 0;
-static time_t time_ball_lost = 0;
 
 void set_target_location(int32_t x, int32_t y, uint32_t maxX, uint32_t maxY, uint8_t sees_ball)
 {
     if(!(can_see_ball = sees_ball))
-    {
-        if((time(NULL) - time_ball_lost) > 3)
-            ardrone_tool_set_ui_pad_start(takeOffFlag = 0);
-    }
-    else
-        time_ball_lost = time(NULL);
-    
+        ardrone_tool_set_ui_pad_start(takeOffFlag = 0);
+
     float newHorizontalStrafe = (float)x / maxX;
     if(fabs(newHorizontalStrafe) > 0.15)
         horizontalStrafe = newHorizontalStrafe;
@@ -48,13 +42,9 @@ C_RESULT automated_update(void)
 {
     if(!can_see_ball)
     {
-        if((time(NULL) - time_ball_lost) > 3)
-            ardrone_tool_set_ui_pad_start(takeOffFlag = 0);
+        ardrone_tool_set_ui_pad_start(takeOffFlag = 0);
         return C_OK;
     }
-    else
-        time_ball_lost = time(NULL);
-
     if(vertical > 0 && !takeOffFlag)
         ardrone_tool_set_ui_pad_start(takeOffFlag = !takeOffFlag);
 
