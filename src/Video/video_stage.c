@@ -58,11 +58,13 @@ static vp_os_mutex_t  video_update_lock = PTHREAD_MUTEX_INITIALIZER;
 
 C_RESULT output_gtk_stage_open( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
+  printf("Output open\n");
   return (SUCCESS);
 }
 
 C_RESULT output_gtk_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
+  printf("%d\n", __LINE__);
   CvMat *cv_in =
         cvCreateMatHeader(QVGA_HEIGHT, QVGA_WIDTH, CV_32FC3);
   /*CvMat *cv_out = 
@@ -73,10 +75,15 @@ C_RESULT output_gtk_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_
   /* Get a reference to the last decoded picture */
   cvSetData(cv_in, (void*)in->buffers[0], 4*QVGA_WIDTH);
 
+  printf("fopen");
+  FILE *f = fopen("output.raw", "w");
+  fwrite(cv_in, in->size, 1, f);
+  fclose(f);
+
   vp_os_mutex_unlock(&video_update_lock);
 
-  //process(&cv_in, &cv_out);
-  cvShowImage("Output", cv_out);
+  process(cv_in, cv_out);
+  cvShowImage("Output", cv_in);
 
   cvReleaseMat(&cv_in);
   cvReleaseMat(&cv_out);
@@ -85,6 +92,7 @@ C_RESULT output_gtk_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_
 
 C_RESULT output_gtk_stage_close( void *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
+  printf("Output close\n");
   return (SUCCESS);
 }
 

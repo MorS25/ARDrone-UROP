@@ -44,7 +44,6 @@ C_RESULT ardrone_tool_init_custom(void)
 
   /* Opencv Window */
   cvNamedWindow("Output", CV_WINDOW_AUTOSIZE);  
-
   /* Start all threads of your application */
   START_THREAD( video_stage, NULL );
 

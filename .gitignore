@@ -1,1 +1,3 @@
-ARDroneLib/Soft/Build/targets_versions/*
+ARDroneLib/*
+build/*
+!build/Makefile
