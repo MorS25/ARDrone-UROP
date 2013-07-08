@@ -27,6 +27,7 @@
 //Local project
 #include <Video/vision_stage.h>
 #include <Control/joypad_control.h>
+#include <Control/automated_control.h>
 
 // Video Processing
 #include <opencv2/core/core_c.h>
@@ -35,6 +36,7 @@
 static int32_t exit_ihm_program = 1;
 SDL_Surface* screen;
 input_device_t gamepad;// = malloc(sizeof(input_device_t));
+input_device_t automated_control;
 
 /* Implementing Custom methods for the main function of an ARDrone application */
 int main(int argc, char** argv)
@@ -176,8 +178,14 @@ C_RESULT ardrone_tool_init_custom(void)
     gamepad.update = &joypad_update;
     gamepad.shutdown = &joypad_shutdown;
 
+    strcpy(automated_control.name, "Automated tracker");
+    automated_control.init = &automated_init;
+    automated_control.update = &automated_update;
+    automated_control.shutdown = &automated_shutdown;
+
     /* Registering for a new device of game controller */
-    ardrone_tool_input_add( &gamepad );
+    //ardrone_tool_input_add( &gamepad );
+    ardrone_tool_input_add( &automated_control );
 
     /* Opencv Window */
     cvNamedWindow("Video", CV_WINDOW_AUTOSIZE);
@@ -194,14 +202,14 @@ C_RESULT ardrone_tool_init_custom(void)
 /* The delegate object calls this method when the event loop exit */
 C_RESULT ardrone_tool_shutdown_custom(void)
 {
+    /* Unregistering for the current device */
+    ardrone_tool_input_remove( &automated_control );
+
     /* Relinquish all threads of your application */
-    //JOIN_THREAD( video_stage );
+    JOIN_THREAD( video_stage );
 
     /* Destroy opencv window */
     cvDestroyAllWindows();
-
-    /* Unregistering for the current device */
-    // ardrone_tool_input_remove( &gamepad );
 
     return C_OK;
 }
@@ -220,9 +228,8 @@ C_RESULT signal_exit()
 }
 
 /* Implementing thread table in which you add routines of your application and those provided by the SDK */
-    BEGIN_THREAD_TABLE
+BEGIN_THREAD_TABLE
     THREAD_TABLE_ENTRY( ardrone_control, 20 )
     THREAD_TABLE_ENTRY( navdata_update, 20 )
-THREAD_TABLE_ENTRY( video_stage, 20 )
-    END_THREAD_TABLE
-
+    THREAD_TABLE_ENTRY( video_stage, 20 )
+END_THREAD_TABLE

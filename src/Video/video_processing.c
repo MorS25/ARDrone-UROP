@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "video_processing.h"
+#include "Control/automated_control.h"
 
 int init = 0;
 int height = 0;
@@ -50,11 +51,15 @@ void trackObject(IplImage* in)
       cvPutText(info, str, cvPoint(15,15), 
                            &font, cvScalar(200,200,250,0));
       free(str);
+
+      set_target_location(convert_x(posX), convert_y(posY), in->width / 2, in->height / 2, 1);
     }
 
     lastX = posX;
     lastY = posY;
   }
+  else
+      set_target_location(0, 0, 1, 1, 0);
 
   free(moments);
 }

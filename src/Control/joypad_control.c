@@ -4,10 +4,10 @@
 #include <ardrone_api.h>
 #include <SDL/SDL.h>
 
-SDL_Joystick *joystick;
-uint8_t canFly = 0;
-uint8_t takeOffFlag = 0;
-uint8_t emergencyFlag = 1;
+static SDL_Joystick *joystick;
+static uint8_t canFly = 0;
+static uint8_t takeOffFlag = 0;
+static uint8_t emergencyFlag = 1;
 
 C_RESULT joypad_init(void)
 {
@@ -28,10 +28,10 @@ C_RESULT joypad_init(void)
     return C_OK;
 }
 
-int16_t leftStickX = 0;
-int16_t leftStickY = 0;
-int16_t rightStickX = 0;
-int16_t rightStickY = 0;
+static int16_t leftStickX = 0;
+static int16_t leftStickY = 0;
+static int16_t rightStickX = 0;
+static int16_t rightStickY = 0;
 
 C_RESULT joypad_update(void)
 {
@@ -99,6 +99,7 @@ C_RESULT joypad_update(void)
                 switch(event.jbutton.button)
                 {
                     case 0:
+                        printf("A pressed\n");
                         takeOffFlag = !takeOffFlag;
                         ardrone_tool_set_ui_pad_start(takeOffFlag);
                         break;
@@ -174,13 +175,13 @@ C_RESULT joypad_update(void)
 
 //    if(1 || canFly)
 //    {
-        ardrone_tool_set_progressive_cmd( 1,
-            /*roll*/(float)(leftStickX)/32768.0f,
-            /*pitch*/(float)(leftStickY)/32768.0f,
-            /*gaz*/-(float)(rightStickY)/32768.0f,
-            /*yaw*/(float)(rightStickX)/32768.0f,
-            /*psi*/0.0,
-            /*psi_accuracy*/0.0);
+//        ardrone_tool_set_progressive_cmd( 1,
+//            /*roll*/(float)(leftStickX)/32768.0f,
+//            /*pitch*/(float)(leftStickY)/32768.0f,
+//            /*gaz*/-(float)(rightStickY)/32768.0f,
+//            /*yaw*/(float)(rightStickX)/32768.0f,
+//            /*psi*/0.0,
+//            /*psi_accuracy*/0.0);
 //    }
 //    printf("roll: %f, pitch: %f, gaz: %f, yaw: %f\n",
 //            /*roll*/(float)(leftStickX)/32768.0f,
