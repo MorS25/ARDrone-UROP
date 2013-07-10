@@ -166,18 +166,20 @@ CvArr* process(CvArr* in)
 
   cvCalcBackProject(&h, result, colorhist);
   cvAnd(result, s, result, NULL);
+  cvSmooth(result, result, CV_MEDIAN, 5, 5, 0, 0);
+  cvThreshold(result, result, 200, 255, CV_THRESH_TOZERO);
+  cvErode(result, result, NULL, 3);
 
   CvConnectedComp comp;
   CvBox2D box;
-  CvTermCriteria criteria = cvTermCriteria(CV_TERMCRIT_ITER, 100, 0.5);
+  CvTermCriteria criteria = cvTermCriteria(CV_TERMCRIT_ITER, 200, 1.0);
   cvCamShift(result, roi, criteria, &comp, &box);
 
   cvLine(input, cvPoint(0,height/2), cvPoint(width, height/2),
          cvScalar(255,0,0,0),1,8,0);
   cvLine(input, cvPoint(width/2,0), cvPoint(width/2, height),
          cvScalar(255,0,0,0),1,8,0);
-  draw_box(input, comp.rect, cvScalar(0, 255, 0, 0));
-  cvEllipseBox(input, box, cvScalar(0,0,0,0), 1, 8, 0);
+  
   cvCircle(input, cvPointFrom32f(box.center), 1, cvScalar(128,128,128,0), 1, 8, 0);
 
   str = malloc(500*sizeof(char));
@@ -187,8 +189,12 @@ CvArr* process(CvArr* in)
   cvPutText(input, str, cvPoint(15,15), &font, cvScalar(0,0,0,0));
   free(str);
 
-  if(comp.rect.width > 0 && comp.rect.height > 0)
+  if(box.size.width > 0 && box.size.height > 0 && comp.rect.width > 0 && comp.rect.height > 0)
+  {
     roi = comp.rect;
+    draw_box(input, comp.rect, cvScalar(0, 255, 0, 0));
+    cvEllipseBox(input, box, cvScalar(0,0,0,0), 1, 8, 0);
+  }
 
   cvReleaseImage(&h);
   cvReleaseImage(&s);
