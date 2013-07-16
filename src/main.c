@@ -15,6 +15,7 @@
 //Common
 #include <config.h>
 #include <ardrone_api.h>
+#include <signal.h>
 
 //VP_SDK
 #include <ATcodec/ATcodec_api.h>
@@ -38,9 +39,22 @@ SDL_Surface* screen;
 input_device_t gamepad;// = malloc(sizeof(input_device_t));
 input_device_t automated_control;
 
+void controlCHandler (int signal)
+{
+    // Flush all streams before terminating
+    fflush (NULL);
+    usleep (200000); // Wait 200 msec to be sure that flush occured
+    printf ("\nAll files were flushed\n");
+    exit (0);
+}
+
 /* Implementing Custom methods for the main function of an ARDrone application */
 int main(int argc, char** argv)
 {
+    signal (SIGABRT, &controlCHandler);
+    signal (SIGTERM, &controlCHandler);
+    signal (SIGINT, &controlCHandler);
+
     if (SDL_Init( SDL_INIT_JOYSTICK | SDL_INIT_VIDEO ) < 0)
     {
         fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
@@ -223,7 +237,13 @@ bool_t ardrone_tool_exit()
 C_RESULT signal_exit()
 {
     exit_ihm_program = 0;
+    return C_OK;
+}
 
+C_RESULT signal_kill()
+{
+    exit_ihm_program = 0;
+		printf("Kill\n");
     return C_OK;
 }
 
