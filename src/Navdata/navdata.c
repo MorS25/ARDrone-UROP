@@ -1,6 +1,7 @@
 #include <ardrone_tool/Navdata/ardrone_navdata_client.h>
 
-#include <Navdata/navdata.h>
+#include "Navdata/navdata.h"
+#include "Control/automated_control.h"
 #include <stdio.h>
 
 /* Initialization local variables before event loop  */
@@ -12,9 +13,9 @@ inline C_RESULT demo_navdata_client_init( void* data )
 /* Receving navdata during the event loop */
 inline C_RESULT demo_navdata_client_process( const navdata_unpacked_t* const navdata )
 {
-/*	const navdata_demo_t*nd = &navdata->navdata_demo;
+	const navdata_demo_t*nd = &navdata->navdata_demo;
 
-	printf("=====================\nNavdata for flight demonstrations =====================\n\n");
+	/*printf("=====================\nNavdata for flight demonstrations =====================\n\n");
 
 	printf("Control state : %i\n",nd->ctrl_state);
 	printf("Battery level : %i mV\n",nd->vbat_flying_percentage);
@@ -23,6 +24,8 @@ inline C_RESULT demo_navdata_client_process( const navdata_unpacked_t* const nav
 	printf("Speed         : [vX] %4.3f  [vY] %4.3f  [vZPsi] %4.3f\n",nd->theta,nd->phi,nd->psi);
 
 	printf("\033[8A");*/
+	set_navdata(nd->theta, nd->psi, nd->phi, nd->altitude, 
+			        nd->vx, nd->vy, nd->vz);
 
   return C_OK;
 }

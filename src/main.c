@@ -42,6 +42,7 @@ input_device_t automated_control;
 void controlCHandler (int signal)
 {
     // Flush all streams before terminating
+    ardrone_tool_set_ui_pad_start(0);
     fflush (NULL);
     usleep (200000); // Wait 200 msec to be sure that flush occured
     printf ("\nAll files were flushed\n");
@@ -59,15 +60,6 @@ int main(int argc, char** argv)
     {
         fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
         exit(1);
-    }
-
-    //Set up the screen
-    screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE );
-
-    //If there was an error in setting up the screen
-    if( screen == NULL )
-    {
-        return 0; 
     }
 
     return ardrone_tool_main(argc, argv);
@@ -203,7 +195,7 @@ C_RESULT ardrone_tool_init_custom(void)
 
     /* Opencv Window */
     cvNamedWindow("Video", CV_WINDOW_AUTOSIZE);
-    cvNamedWindow("Detect", CV_WINDOW_AUTOSIZE);
+    //cvNamedWindow("Detect", CV_WINDOW_AUTOSIZE);
 
     /* Start all threads of your application */
     start_video_thread();

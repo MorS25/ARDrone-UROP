@@ -31,7 +31,7 @@ IplImage* getThresholdedImage(IplImage* in)
 
 void trackObject(IplImage* in)
 {
-  CvMoments *moments = (CvMoments*)malloc(sizeof(CvMoments));
+  /*CvMoments *moments = (CvMoments*)malloc(sizeof(CvMoments));
   cvMoments(in, moments, 1);
   double moment10 = cvGetSpatialMoment(moments, 1, 0);
   double moment01 = cvGetSpatialMoment(moments, 0, 1);
@@ -52,16 +52,16 @@ void trackObject(IplImage* in)
                            &font, cvScalar(200,200,250,0));
       free(str);
 
-      set_target_location(convert_x(posX), convert_y(posY), in->width / 2, in->height / 2, 1);
+      //set_target_location(convert_x(posX), convert_y(posY), in->width / 2, in->height / 2, 1);
     }
 
     lastX = posX;
     lastY = posY;
   }
   else
-      set_target_location(0, 0, 1, 1, 0);
+      //set_target_location(0, 0, 1, 1, 0);
 
-  free(moments);
+  free(moments);*/
 }
 
 IplImage* process(IplImage* in)

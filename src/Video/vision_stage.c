@@ -121,15 +121,15 @@ C_RESULT vision_stage_transform( void *cfg, vp_api_io_data_t *in, vp_api_io_data
 
     vp_os_mutex_unlock(&video_update_lock);
 
-    cv_out = process(img);
+    //cv_out = process(img);
 
     cvShowImage("Video", img);
-    cvShowImage("Detect", cv_out);
+    //cvShowImage("Detect", cv_out);
 
     cvWaitKey(1);
 
     cvReleaseImage(&img);
-    cvReleaseImage(&cv_out);
+    //cvReleaseImage(&cv_out);
 
     return (SUCCESS);
 }
